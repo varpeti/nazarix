@@ -6,7 +6,7 @@ extra_options = ["--features=arena-capture-the-flag"]
 
 [tutorial]
 destination = "../"
-branch = "tutorial-first_attack"
+branch = "tutorial-creeps_bodies"
 prune = true
 
 
