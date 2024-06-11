@@ -1,12 +1,12 @@
-default_deploy_mode = "tutorial-simple_move"
+default_deploy_mode = "tutorial"
 
 [build]
 build_mode = "arena"
 extra_options = ["--features=arena-capture-the-flag"]
 
-[tutorial-simple_move]
+[tutorial]
 destination = "../"
-branch = "tutorial-simple_move"
+branch = "tutorial-first_attack"
 prune = true
 
 

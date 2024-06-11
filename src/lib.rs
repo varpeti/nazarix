@@ -1,4 +1,4 @@
-use screeps_arena::{game, prototypes};
+use screeps_arena::{constants, game, prototypes};
 use wasm_bindgen::prelude::*;
 
 mod logging;
@@ -14,6 +14,12 @@ pub fn tick() {
         setup();
     }
     let creeps = game::utils::get_objects_by_prototype(prototypes::CREEP);
-    let flags = game::utils::get_objects_by_prototype(prototypes::FLAG);
-    creeps[0].move_to(&flags[0], None);
+    let my_creeps = creeps.iter().filter(|creep| creep.my()).collect::<Vec<_>>();
+    let enemy_creeps = creeps
+        .iter()
+        .filter(|creep| !creep.my())
+        .collect::<Vec<_>>();
+    if my_creeps[0].attack(enemy_creeps[0]) == constants::ReturnCode::NotInRange {
+        my_creeps[0].move_to(enemy_creeps[0], None);
+    }
 }
